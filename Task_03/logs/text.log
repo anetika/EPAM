@@ -48,3 +48,17 @@
 2021-07-12 20:24:20 [main] INFO  epam.shapes.service.impl.CalculateServiceImpl- Perimeter of triangle was calculated
 2021-07-12 20:24:20 [main] INFO  epam.shapes.service.impl.CalculateServiceImpl- Perimeter of triangle was calculated
 2021-07-12 20:24:20 [main] INFO  epam.shapes.repository.impl.TriangleRepositoryImpl- Sorted list was returned
+2021-08-29 13:49:30 [main] ERROR edu.epam.shapes.parser.ShapeParser- List is empty
+2021-08-29 13:49:30 [main] INFO  edu.epam.shapes.reader.ShapeReader- All strings were read
+2021-08-29 13:49:30 [main] INFO  edu.epam.shapes.parser.ShapeParser- String was parsed
+2021-08-29 13:49:30 [main] INFO  edu.epam.shapes.parser.ShapeParser- String was parsed
+2021-08-29 13:49:30 [main] INFO  edu.epam.shapes.parser.ShapeParser- String was parsed
+2021-08-29 13:49:30 [main] ERROR edu.epam.shapes.parser.ShapeParser- List is null
+2021-08-29 13:49:30 [main] INFO  edu.epam.shapes.reader.ShapeReader- All strings were read
+2021-08-29 13:49:30 [main] INFO  edu.epam.shapes.parser.ShapeParser- String was parsed
+2021-08-29 13:49:30 [main] INFO  edu.epam.shapes.parser.ShapeParser- String was parsed
+2021-08-29 13:49:30 [main] INFO  edu.epam.shapes.parser.ShapeParser- String was parsed
+2021-08-29 13:49:30 [main] INFO  edu.epam.shapes.reader.ShapeReader- All strings were read
+2021-08-29 13:49:30 [main] INFO  edu.epam.shapes.parser.ShapeParser- String was parsed
+2021-08-29 13:49:30 [main] INFO  edu.epam.shapes.parser.ShapeParser- String was parsed
+2021-08-29 13:49:30 [main] INFO  edu.epam.shapes.parser.ShapeParser- String was parsed
