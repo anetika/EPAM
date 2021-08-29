@@ -1,0 +1,33 @@
+2021-08-02 18:34:05 [main] INFO  edu.epam.handling.reader.CompositeReader- The whole text was read
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.WordParser- Word was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.LexemeParser- Lexeme was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.WordParser- Word was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.WordParser- Word was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.LexemeParser- Lexeme was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.WordParser- Word was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.LexemeParser- Lexeme was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.WordParser- Word was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.LexemeParser- Lexeme was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.WordParser- Word was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.LexemeParser- Lexeme was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.WordParser- Word was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.LexemeParser- Lexeme was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.WordParser- Word was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.LexemeParser- Lexeme was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.WordParser- Word was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.LexemeParser- Lexeme was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.WordParser- Word was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.LexemeParser- Lexeme was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.WordParser- Word was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.LexemeParser- Lexeme was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.WordParser- Word was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.LexemeParser- Lexeme was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.WordParser- Word was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.LexemeParser- Lexeme was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.WordParser- Word was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.LexemeParser- Lexeme was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.SentenceParser- Sentence was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.ParagraphParser- Paragraph was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.parser.impl.TextParser- Text was parsed
+2021-08-02 18:34:05 [main] INFO  epam.handling.service.impl.HandlingServiceImpl- All words from sentence were returned
+2021-08-02 18:34:05 [main] INFO  epam.handling.service.impl.HandlingServiceImpl- Amount of consonants was returned
