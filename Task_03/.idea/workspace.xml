@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d02cfab1-dcfe-4327-acba-74d4debe5e57" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Task_02/resources/deposits.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_02/resources/deposits.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_02/src/edu/epam/parsing/entity/Deposit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_02/src/edu/epam/parsing/entity/DepositType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_02/src/edu/epam/parsing/entity/LegalPersonDeposit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_02/src/edu/epam/parsing/entity/PhysicalPersonDeposit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_02/src/edu/epam/parsing/exception/DepositException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_02/src/edu/epam/parsing/parser/DepositBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_02/src/edu/epam/parsing/parser/DepositBuilderFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_02/src/edu/epam/parsing/parser/DepositDomBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_02/src/edu/epam/parsing/parser/DepositEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_02/src/edu/epam/parsing/parser/DepositHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_02/src/edu/epam/parsing/parser/DepositSaxBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_02/src/edu/epam/parsing/parser/DepositStaxBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_02/src/edu/epam/parsing/validator/XmlValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_02/src/test/edu/epam/parsing/domParser/DomParserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_02/src/test/edu/epam/parsing/saxParser/SaxParserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_02/src/test/edu/epam/parsing/staxParser/StaxParserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_02/src/test/edu/epam/parsing/validator/ValidatorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/entity/Point.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/entity/Triangle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/exception/ShapeException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/factory/ShapeFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/observer/Observable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/observer/Observer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/observer/TriangleEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/observer/impl/TriangleObserver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/parser/ShapeParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/reader/ShapeReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/repository/TriangleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/repository/impl/TriangleRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/service/CalculateService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/service/CheckService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/service/impl/CalculateServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/service/impl/CheckServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/specification/TriangleSpecification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/specification/impl/TriangleIdSortSpecification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/specification/impl/TriangleIdSpecification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/specification/impl/TrianglePerimeterSortSpecification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/specification/impl/TrianglePerimeterSpecification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/specification/impl/TriangleSquareSortSpecification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/specification/impl/TriangleSquareSpecification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/util/IdGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/validator/PointValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/validator/StringValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/warehouse/TriangleParameter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/epam/shapes/warehouse/Warehouse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/edu/epam/shapes/parser/ShapeParserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/edu/epam/shapes/repository/ShapeRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/edu/epam/shapes/service/ShapeCalculateServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/edu/epam/shapes/service/ShapeCheckServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/edu/epam/shapes/warehouse/ShapeWarehouseTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/input.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_04/Task_04.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_04/resources/organs.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_04/resources/organs_correct.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_04/resources/sentence.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_04/resources/sentences.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_04/resources/sentences_correct.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_04/resources/words.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_04/src/edu/epam/handling/composite/ComponentType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_04/src/edu/epam/handling/composite/Delimiter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_04/src/edu/epam/handling/composite/TextComponent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_04/src/edu/epam/handling/composite/impl/Leaf.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_04/src/edu/epam/handling/composite/impl/TextComposite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_04/src/edu/epam/handling/exception/CompositeException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_04/src/edu/epam/handling/parser/CompositeParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_04/src/edu/epam/handling/parser/impl/LexemeParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_04/src/edu/epam/handling/parser/impl/ParagraphParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_04/src/edu/epam/handling/parser/impl/SentenceParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_04/src/edu/epam/handling/parser/impl/TextParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_04/src/edu/epam/handling/parser/impl/WordParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_04/src/edu/epam/handling/reader/CompositeReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_04/src/edu/epam/handling/service/HandlingService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_04/src/edu/epam/handling/service/impl/HandlingServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_04/src/test/edu/epam/handling/parser/ParserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_04/src/test/edu/epam/handling/service/HandlingServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_05/src/edu/epam/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_05/src/edu/epam/entity/LogisticsBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_05/src/edu/epam/entity/RequiredAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_05/src/edu/epam/entity/Terminal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_05/src/edu/epam/entity/Truck.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_05/src/edu/epam/exception/ThreadException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_05/src/edu/epam/util/IdGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_05/src/resources/LogisticBase.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Task_05/src/resources/trucks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WebProject/src/main/java/edu/epam/webproject/model/connection/ConnectionFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WebProject/src/main/java/edu/epam/webproject/model/connection/CustomConnectionPool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WebProject/src/main/java/edu/epam/webproject/model/connection/ProxyConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java_Fundamentals.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_01/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Task_01/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_01/.idea/libraries/jcommander_1_81.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Task_01/.idea/libraries/jcommander_1_81.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_01/.idea/libraries/log4j_api_2_14_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Task_01/.idea/libraries/log4j_api_2_14_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_01/.idea/libraries/log4j_core_2_14_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Task_01/.idea/libraries/log4j_core_2_14_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_01/.idea/libraries/testng_7_4_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Task_01/.idea/libraries/testng_7_4_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_01/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Task_01/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_01/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Task_01/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_01/.idea/project-template.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Task_01/.idea/project-template.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_01/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Task_01/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_01/logs/text.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Task_01/logs/text.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_01/out/production/Task_01/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_01/out/production/Task_01/edu/epam/arrays/parser/CustomArrayParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Task_01/out/production/Task_01/edu/epam/arrays/parser/CustomArrayParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_01/out/production/Task_01/edu/epam/arrays/reader/CustomArrayReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Task_01/out/production/Task_01/edu/epam/arrays/reader/CustomArrayReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_01/out/production/Task_01/log4j2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Task_01/out/production/Task_01/log4j2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_01/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task_01/src/log4j2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Task_01/src/log4j2.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1u1jX7EcPjyZCuSKYkSa5rMwLKA" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="company" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager" selected="TestNG.ShapeRepositoryTest.queryPerimeterTestTrue">
+    <configuration name="ShapeRepositoryTest.queryPerimeterTestTrue" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Task_03" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.edu.epam.shapes.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.edu.epam.shapes.repository" />
+      <option name="MAIN_CLASS_NAME" value="test.edu.epam.shapes.repository.ShapeRepositoryTest" />
+      <option name="METHOD_NAME" value="queryPerimeterTestTrue" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShapeRepositoryTest.queryPredicateSquareTestTrue" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Task_03" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.edu.epam.shapes.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.edu.epam.shapes.repository" />
+      <option name="MAIN_CLASS_NAME" value="test.edu.epam.shapes.repository.ShapeRepositoryTest" />
+      <option name="METHOD_NAME" value="queryPredicateSquareTestTrue" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShapeRepositoryTest.queryStreamSquareTestTrue" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Task_03" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.edu.epam.shapes.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.edu.epam.shapes.repository" />
+      <option name="MAIN_CLASS_NAME" value="test.edu.epam.shapes.repository.ShapeRepositoryTest" />
+      <option name="METHOD_NAME" value="queryStreamSquareTestTrue" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShapeRepositoryTest.sortPerimeterTestTrue" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Task_03" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.edu.epam.shapes.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.edu.epam.shapes.repository" />
+      <option name="MAIN_CLASS_NAME" value="test.edu.epam.shapes.repository.ShapeRepositoryTest" />
+      <option name="METHOD_NAME" value="sortPerimeterTestTrue" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShapeRepositoryTest.sortSquareTestTrue" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Task_03" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.edu.epam.shapes.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.edu.epam.shapes.repository" />
+      <option name="MAIN_CLASS_NAME" value="test.edu.epam.shapes.repository.ShapeRepositoryTest" />
+      <option name="METHOD_NAME" value="sortSquareTestTrue" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.ShapeRepositoryTest.queryPerimeterTestTrue" />
+        <item itemvalue="TestNG.ShapeRepositoryTest.queryPredicateSquareTestTrue" />
+        <item itemvalue="TestNG.ShapeRepositoryTest.queryStreamSquareTestTrue" />
+        <item itemvalue="TestNG.ShapeRepositoryTest.sortSquareTestTrue" />
+        <item itemvalue="TestNG.ShapeRepositoryTest.sortPerimeterTestTrue" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d02cfab1-dcfe-4327-acba-74d4debe5e57" name="Default Changelist" comment="" />
+      <created>1623840026569</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1623840026569</updated>
+      <workItem from="1623840028285" duration="56000" />
+      <workItem from="1625170252968" duration="31673000" />
+      <workItem from="1625419346571" duration="24719000" />
+      <workItem from="1625906167561" duration="24342000" />
+      <workItem from="1627059032363" duration="3445000" />
+      <workItem from="1627574997625" duration="11000" />
+      <workItem from="1627918391045" duration="609000" />
+      <workItem from="1628451308953" duration="670000" />
+      <workItem from="1628502164522" duration="176000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/edu/epam/shapes/service/ShapeCheckServiceTest.java</url>
+          <line>40</line>
+          <properties class="test.edu.epam.shapes.service.ShapeCheckServiceTest" method="isIsoscelesTriangleCheckTestTrue">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

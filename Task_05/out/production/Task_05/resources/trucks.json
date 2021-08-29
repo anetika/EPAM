@@ -1,0 +1,21 @@
+[
+  {
+    "perishable" : false,
+    "action" : "LOAD"
+  },
+
+  {
+    "perishable" : false,
+    "action" : "UNLOAD"
+  },
+
+  {
+    "perishable" : true,
+    "action" : "LOAD"
+  },
+
+  {
+    "perishable" : true,
+    "action" : "UNLOAD"
+  }
+]
