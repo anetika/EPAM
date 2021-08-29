@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.example.org/deposits"
+        xmlns:tns="http://www.example.org/deposits"
+        elementFormDefault="qualified" >
+    <element name="deposits">
+        <complexType>
+            <sequence>
+                <element ref="tns:deposit" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+
+
+    <complexType name="Deposit">
+        <sequence>
+            <element name="name" type="string"/>
+            <element name="country" type="string" />
+            <element name="depositor" type="string"/>
+            <element name="type" type="tns:DepositType"/>
+        </sequence>
+        <attribute name="account-id" use="required" type="tns:Account-id" />
+        <attribute name="amount-on-deposit" use="optional" default="5000" type="tns:Amount-on-deposit"/>
+        <attribute name="profitability" use="optional" default="7" type="tns:Profitability"/>
+        <attribute name="time-constraints" use="required" type="gYearMonth"/>
+    </complexType>
+
+    <complexType name="Legal-person-deposit">
+        <complexContent>
+            <extension base="tns:Deposit">
+                <sequence>
+                    <element name="name-of-organisation" type="string" />
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="Physical-person-deposit">
+        <complexContent>
+            <extension base="tns:Deposit">
+                <sequence>
+                    <element name="passport-number" type="positiveInteger" />
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+
+    <simpleType name="DepositType">
+        <restriction base="string">
+            <enumeration value="On-demand"/>
+            <enumeration value="Term"/>
+            <enumeration value="Calculated"/>
+            <enumeration value="Accumulative"/>
+            <enumeration value="Saving"/>
+            <enumeration value="Metallic"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="Account-id">
+        <restriction base="ID">
+            <pattern value="\w{1,15}"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="Amount-on-deposit">
+        <restriction base="positiveInteger">
+            <minInclusive value="5000"/>
+            <maxInclusive value="100000"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="Profitability">
+        <restriction base="positiveInteger">
+            <minInclusive value="7"/>
+            <maxInclusive value="100"/>
+        </restriction>
+    </simpleType>
+
+
+    <element name="deposit" type="tns:Deposit" abstract="true"/>
+    <element name="legal-person-deposit" type="tns:Legal-person-deposit" substitutionGroup="tns:deposit"/>
+    <element name="physical-person-deposit" type="tns:Physical-person-deposit" substitutionGroup="tns:deposit"/>
+</schema>

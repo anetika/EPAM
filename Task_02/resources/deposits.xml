@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deposits
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.example.org/deposits"
+        xsi:schemaLocation="http://www.example.org/deposits  deposits.xsd">
+
+    <legal-person-deposit account-id="d1" time-constraints="2019-05">
+        <name>Belarusbank</name>
+        <country>Belarus</country>
+        <depositor>Lashuk</depositor>
+        <type>On-demand</type>
+        <name-of-organisation>LashukGroups</name-of-organisation>
+    </legal-person-deposit>
+    <legal-person-deposit account-id="d2" time-constraints="2019-05">
+        <name>Belinvestbank</name>
+        <country>Belarus</country>
+        <depositor>Denisova</depositor>
+        <type>Term</type>
+        <name-of-organisation>DenisovaInc</name-of-organisation>
+    </legal-person-deposit>
+    <physical-person-deposit account-id="d3" time-constraints="2016-09">
+        <name>Priorbank</name>
+        <country>Belarus</country>
+        <depositor>Kozel</depositor>
+        <type>Calculated</type>
+        <passport-number>1234567</passport-number>
+    </physical-person-deposit>
+    <physical-person-deposit account-id="d4" time-constraints="2016-02">
+        <name>AlfaBank</name>
+        <country>Russia</country>
+        <depositor>Rozum</depositor>
+        <type>On-demand</type>
+        <passport-number>7654321</passport-number>
+    </physical-person-deposit>
+    <physical-person-deposit account-id="d5" time-constraints="2016-02">
+        <name>AlfaBank</name>
+        <country>Russia</country>
+        <depositor>Rodionov</depositor>
+        <type>On-demand</type>
+        <passport-number>4655538</passport-number>
+    </physical-person-deposit>
+    <legal-person-deposit account-id="d6" time-constraints="2019-05">
+        <name>Tinkoff</name>
+        <country>Russia</country>
+        <depositor>Kovaleva</depositor>
+        <type>Term</type>
+        <name-of-organisation>KovalevaProd</name-of-organisation>
+    </legal-person-deposit>
+    <physical-person-deposit account-id="d7" time-constraints="2016-09">
+        <name>Sberbank</name>
+        <country>Russia</country>
+        <depositor>Tereshko</depositor>
+        <type>Calculated</type>
+        <passport-number>7643845</passport-number>
+    </physical-person-deposit>
+    <physical-person-deposit account-id="d8" time-constraints="2016-02">
+        <name>BelgazpromBank</name>
+        <country>Belarus</country>
+        <depositor>Kozlova</depositor>
+        <type>On-demand</type>
+        <passport-number>4653741</passport-number>
+    </physical-person-deposit>
+    <physical-person-deposit account-id="d9" time-constraints="2016-02">
+        <name>BelgazpromBank</name>
+        <country>Belarus</country>
+        <depositor>Gelmanov</depositor>
+        <type>On-demand</type>
+        <passport-number>1597536</passport-number>
+    </physical-person-deposit>
+    <legal-person-deposit account-id="d10" time-constraints="2019-05">
+        <name>Belinvestbank</name>
+        <country>Belarus</country>
+        <depositor>Bovshis</depositor>
+        <type>Metallic</type>
+        <name-of-organisation>BovshisCons</name-of-organisation>
+    </legal-person-deposit>
+    <physical-person-deposit account-id="d11" time-constraints="2016-09">
+        <name>Priorbank</name>
+        <country>Belarus</country>
+        <depositor>Ksenevich</depositor>
+        <type>Calculated</type>
+        <passport-number>7864315</passport-number>
+    </physical-person-deposit>
+    <physical-person-deposit account-id="d12" time-constraints="2016-02">
+        <name>AlfaBank</name>
+        <country>Russia</country>
+        <depositor>Minko</depositor>
+        <type>Accumulative</type>
+        <passport-number>4563851</passport-number>
+    </physical-person-deposit>
+    <physical-person-deposit account-id="d13" time-constraints="2016-02">
+        <name>AlfaBank</name>
+        <country>Russia</country>
+        <depositor>Drozdovskaya</depositor>
+        <type>On-demand</type>
+        <passport-number>8465135</passport-number>
+    </physical-person-deposit>
+    <legal-person-deposit account-id="d14" time-constraints="2019-05">
+        <name>Tinkoff</name>
+        <country>Belarus</country>
+        <depositor>Dovnar</depositor>
+        <type>Saving</type>
+        <name-of-organisation>PomGroups</name-of-organisation>
+    </legal-person-deposit>
+    <physical-person-deposit account-id="d15" time-constraints="2016-09">
+        <name>BSB</name>
+        <country>Belarus</country>
+        <depositor>Melnikova</depositor>
+        <type>Calculated</type>
+        <passport-number>4346139</passport-number>
+    </physical-person-deposit>
+    <physical-person-deposit account-id="d16" time-constraints="2016-02">
+        <name>AlfaBank</name>
+        <country>Russia</country>
+        <depositor>Rinkevich</depositor>
+        <type>Metallic</type>
+        <passport-number>6548529</passport-number>
+    </physical-person-deposit>
+</deposits>
