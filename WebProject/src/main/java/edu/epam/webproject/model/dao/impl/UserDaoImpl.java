@@ -5,6 +5,7 @@ import edu.epam.webproject.exception.DaoException;
 import edu.epam.webproject.model.connection.CustomConnectionPool;
 import edu.epam.webproject.model.dao.ColumnName;
 import edu.epam.webproject.model.dao.UserDao;
+import edu.epam.webproject.util.PasswordEncryptor;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -33,9 +34,11 @@ public class UserDaoImpl implements UserDao {
             statement.setString(1, email);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
+                PasswordEncryptor encryptor = PasswordEncryptor.getInstance();
                 String hashPassword = resultSet.getString(ColumnName.EMAIL);
-                // TODO add password decryption
-                user = createUser(resultSet);
+                if (encryptor.checkPassword(password, hashPassword)){
+                    user = createUser(resultSet);
+                }
             }
         } catch (SQLException e) {
             throw new DaoException("Unable to handle UserDao.signIn request", e);

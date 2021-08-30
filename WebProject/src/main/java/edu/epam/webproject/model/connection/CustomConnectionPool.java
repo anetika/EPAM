@@ -1,5 +1,6 @@
 package edu.epam.webproject.model.connection;
 
+import edu.epam.webproject.util.PasswordEncryptor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -27,7 +28,7 @@ public class CustomConnectionPool {
             freeConnections = new LinkedBlockingDeque<>(DEFAULT_POOL_SIZE);
             usedConnections = new LinkedBlockingDeque<>();
             for (int i = 0; i < DEFAULT_POOL_SIZE; i++) {
-                ProxyConnection proxyConnection = (ProxyConnection) ConnectionFactory.getConnection();
+                ProxyConnection proxyConnection = new ProxyConnection(ConnectionFactory.getConnection());
                 freeConnections.put(proxyConnection);
             }
         } catch (InterruptedException e) {
@@ -95,12 +96,5 @@ public class CustomConnectionPool {
                 logger.error("Unable to deregister driver " + driver, e);
             }
         }
-        /*DriverManager.getDrivers().asIterator().forEachRemaining(driver-> {
-            try{
-                DriverManager.deregisterDriver(driver);
-            } catch (SQLException e) {
-                logger.error("Unable to deregister driver " + driver, e);
-            }
-        });*/
     }
 }
