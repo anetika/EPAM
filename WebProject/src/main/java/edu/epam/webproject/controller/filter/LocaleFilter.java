@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.Locale;
+
 @WebFilter(urlPatterns = {"/*"})
 public class LocaleFilter implements Filter {
     @Override

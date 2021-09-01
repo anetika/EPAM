@@ -1,5 +1,8 @@
 package edu.epam.webproject.controller.command;
 
+import edu.epam.webproject.controller.command.impl.go.GoToSignInPageCommand;
+import edu.epam.webproject.controller.command.impl.go.GoToSignUpPageCommand;
+
 import java.util.EnumMap;
 
 public class CommandProvider {
@@ -7,7 +10,9 @@ public class CommandProvider {
     private final EnumMap<CommandType, Command> commands = new EnumMap<>(CommandType.class);
 
     private CommandProvider() {
-        //commands.put();
+        commands.put(CommandType.GO_TO_SIGN_IN_PAGE_COMMAND, new GoToSignInPageCommand());
+        commands.put(CommandType.GO_TO_SIGN_UP_PAGE_COMMAND, new GoToSignUpPageCommand());
+
     }
 
     public static CommandProvider getInstance() {
