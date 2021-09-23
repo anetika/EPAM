@@ -1,13 +1,13 @@
 package edu.epam.webproject.entity;
 
-import java.math.BigInteger;
+import java.math.BigDecimal;
 
 public class Vacancy extends Entity {
     private long id;
     private String logo;
     private String position;
     private String company;
-    private BigInteger salary;
+    private BigDecimal salary;
     private String description;
     private VacancyStatus status;
     private User recruiter;
@@ -44,11 +44,11 @@ public class Vacancy extends Entity {
         this.company = company;
     }
 
-    public BigInteger getSalary() {
+    public BigDecimal getSalary() {
         return salary;
     }
 
-    public void setSalary(BigInteger salary) {
+    public void setSalary(BigDecimal salary) {
         this.salary = salary;
     }
 

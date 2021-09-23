@@ -1,2 +1,4 @@
-package edu.epam.webproject.model.dao;public interface FeedbackDao {
+package edu.epam.webproject.model.dao;
+
+public interface FeedbackDao {
 }

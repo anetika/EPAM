@@ -13,6 +13,6 @@
     <title>Start page</title>
 </head>
 <body>
-    <c:redirect url="pages/about.jsp" />
+    <c:redirect url="pages/all/about.jsp" />
 </body>
 </html>

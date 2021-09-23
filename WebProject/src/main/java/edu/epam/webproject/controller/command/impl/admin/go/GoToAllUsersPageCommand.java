@@ -1,4 +1,4 @@
-package edu.epam.webproject.controller.command.impl.admin;
+package edu.epam.webproject.controller.command.impl.admin.go;
 
 import edu.epam.webproject.controller.command.*;
 import edu.epam.webproject.entity.User;
@@ -22,7 +22,7 @@ public class GoToAllUsersPageCommand implements Command {
             router = new Router(PagePath.ALL_USERS_PAGE, Router.RouterType.FORWARD);
         } catch (ServiceException e) {
             request.getSession().setAttribute(SessionAttribute.EXCEPTION, e);
-            router = new Router(PagePath.ERROR_403_PAGE, Router.RouterType.REDIRECT);
+            router = new Router(PagePath.ERROR_500_PAGE, Router.RouterType.REDIRECT);
         }
         return router;
     }

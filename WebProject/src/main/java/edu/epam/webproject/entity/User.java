@@ -102,10 +102,28 @@ public class User extends Entity {
     }
 
     public enum UserStatus {
-        APPROVED, REJECTED, IN_PROGRESS
+        APPROVED(1),
+        REJECTED(2),
+        IN_PROGRESS(3);
+        private final int value;
+        private UserStatus(int value){
+            this.value = value;
+        }
+        public int getValue(){
+            return value;
+        }
     }
 
     public enum Role {
-        USER, ADMIN, GUEST
+        ADMIN(1),
+        USER(2),
+        GUEST(3);
+        private final int value;
+        private Role(int value){
+            this.value = value;
+        }
+        public int getValue(){
+            return value;
+        }
     }
 }

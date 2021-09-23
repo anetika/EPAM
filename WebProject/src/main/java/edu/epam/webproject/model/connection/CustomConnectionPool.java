@@ -28,8 +28,13 @@ public class CustomConnectionPool {
             freeConnections = new LinkedBlockingDeque<>(DEFAULT_POOL_SIZE);
             usedConnections = new LinkedBlockingDeque<>();
             for (int i = 0; i < DEFAULT_POOL_SIZE; i++) {
-                ProxyConnection proxyConnection = new ProxyConnection(ConnectionFactory.getConnection());
-                freeConnections.put(proxyConnection);
+                Connection connection = ConnectionFactory.getConnection();
+                if (connection == null){
+                    logger.error("Unable to create connection");
+                } else{
+                    ProxyConnection proxyConnection = new ProxyConnection(ConnectionFactory.getConnection());
+                    freeConnections.put(proxyConnection);
+                }
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt(); //refactor
