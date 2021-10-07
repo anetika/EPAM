@@ -7,6 +7,7 @@ import edu.epam.webproject.model.dao.VacancyDao;
 import edu.epam.webproject.model.dao.impl.VacancyDaoImpl;
 import edu.epam.webproject.model.service.VacancyService;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class VacancyServiceImpl implements VacancyService {
@@ -23,7 +24,34 @@ public class VacancyServiceImpl implements VacancyService {
         try {
             return vacancyDao.findVacanciesByStatus(status);
         } catch (DaoException e) {
-            throw new ServiceException("Unable to execute a findVacanciesByStatus request", e);
+            throw new ServiceException("Unable to execute findVacanciesByStatus request", e);
+        }
+    }
+
+    @Override
+    public void addNewVacancy(String logo, String position, String company, BigDecimal salary, String description, long recruiter_id) throws ServiceException {
+        try {
+            vacancyDao.addNewVacancy(logo, position, company, salary, description, recruiter_id);
+        } catch (DaoException e) {
+            throw new ServiceException("Unable to execute addNewVacancy request", e);
+        }
+    }
+
+    @Override
+    public void changeVacancyStatus(Vacancy.VacancyStatus vacancyStatus, long id) throws ServiceException {
+        try {
+            vacancyDao.changeVacancyStatus(vacancyStatus, id);
+        } catch (DaoException e) {
+            throw new ServiceException("Unable to execute changeVacancyStatus request", e);
+        }
+    }
+
+    @Override
+    public List<Vacancy> findVacanciesByRecruiterId(long id) throws ServiceException {
+        try {
+            return vacancyDao.findVacanciesByRecruiterId(id);
+        } catch (DaoException e) {
+            throw new ServiceException("Unable to execute findVacanciesByRecruiterId", e);
         }
     }
 }

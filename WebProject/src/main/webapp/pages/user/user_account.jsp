@@ -6,11 +6,12 @@
   Time: 18:54
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
     <title>Account</title>
-    <link rel="stylesheet" href="<c:url value="../../static/css/account.css"/>">
+    <link rel="stylesheet" href="<c:url value="../../static/css/accountss.css"/>">
+    <script src="<c:url value="../../static/js/account.js"/> "></script>
 </head>
 <body>
 <jsp:include page="../header.jsp"/>
@@ -22,9 +23,23 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                                <c:if test="${user.icon == null}">
+                                    <label for="content" class="d-flex flex-column align-items-center text-center">
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="User icon" class="rounded-circle" width="150">
+                                    </label>
+                                </c:if>
+                                <c:if test="${user.icon != null}">
+                                    <label for="content" class="d-flex flex-column align-items-center text-center">
+                                        <img src="<c:url value="${user.icon}"/> " alt="User icon" id="user_icon">
+                                    </label>
+                                </c:if>
                                 <div class="mt-3">
-                                    <button class="btn btn-primary">Upload photo</button>
+                                    <form action="<c:url value="/Controller"/>" method="post" enctype="multipart/form-data">
+                                        <input type="hidden" name="command" value="upload_user_icon_command">
+                                        <input type="file" id="content" name="content" onchange="uploadButtonController()">
+                                        <input type="submit" class="btn btn-primary" value="Upload photo" id="upload_button" disabled/>
+                                    </form>
+
                                 </div>
                             </div>
                         </div>
@@ -76,5 +91,6 @@
             </div>
         </div>
     </div>
+<jsp:include page="../footer.jsp"/>
 </body>
 </html>

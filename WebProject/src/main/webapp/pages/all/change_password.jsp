@@ -2,14 +2,14 @@
 <%--
   Created by IntelliJ IDEA.
   User: HP
-  Date: 01.09.2021
-  Time: 10:21
+  Date: 05.10.2021
+  Time: 13:19
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Sign In</title>
+    <title>Change password</title>
     <link rel="stylesheet" href="<c:url value="../../static/css/form.css"/>">
 </head>
 <body>
@@ -17,11 +17,7 @@
 <div class="data">
     <div class="inner-data">
         <form action="<c:url value="/Controller"/>" method="post">
-            <input type="hidden" name="command" value="sign_in_command">
-            <div class="form-input">
-                <label for="email">Email:</label>
-                <input type="email" placeholder="email" name="email" id="email">
-            </div>
+            <input type="hidden" name="command" value="change_password_command">
             <div class="form-input">
                 <label for="password">Password:</label>
                 <input type="password" placeholder="password" name="password" id="password">

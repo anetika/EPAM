@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
         try {
             return userDao.signIn(email, password);
         } catch (DaoException e) {
-            throw new ServiceException("Unable to execute a signIn request", e);
+            throw new ServiceException("Unable to execute signIn request", e);
         }
     }
 
@@ -63,5 +63,39 @@ public class UserServiceImpl implements UserService {
         } catch (DaoException e) {
             throw new ServiceException("Unable to execute an activateUserByEmail request", e);
         }
+    }
+
+    @Override
+    public void changeUserStatusByEmail(String email, User.UserStatus status) throws ServiceException {
+        try {
+            userDao.changeUserStatusByEmail(email, status.getValue());
+        } catch (DaoException e) {
+            throw new ServiceException("Unable to execute a changeUserStatusByEmail request", e);
+        }
+    }
+
+    @Override
+    public void updateUserIcon(long id, String icon) throws ServiceException {
+        try {
+            userDao.updateUserIcon(id, icon);
+        } catch (DaoException e) {
+            throw new ServiceException("Unable to execute a updateUserIcon request", e);
+        }
+    }
+
+    @Override
+    public boolean changeUserPasswordByEmail(String email, String password, String repeatedPassword) throws ServiceException {
+        boolean result = false;
+        try {
+            if (password.equals(repeatedPassword)) {
+                PasswordEncryptor passwordEncryptor = PasswordEncryptor.getInstance();
+                String hashedPassword = passwordEncryptor.getHashedPassword(password);
+                userDao.changeUserPasswordByEmail(email, hashedPassword);
+                result = true;
+            }
+        } catch (DaoException e) {
+            throw new ServiceException("Unable to execute a changeUserPasswordByEmail request", e);
+        }
+        return result;
     }
 }

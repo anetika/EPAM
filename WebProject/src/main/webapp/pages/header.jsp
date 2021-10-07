@@ -35,7 +35,10 @@
                         <a class="nav-link" href="#">Find job</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Offer vacancy</a>
+                        <a class="nav-link" href="<c:url value="/Controller?command=go_to_offer_vacancy_page_command"/> ">Offer vacancy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<c:url value="/Controller?command=go_to_user_account_page_command"/> ">My profile</a>
                     </li>
                 </c:if>
                 <c:if test="${sessionScope.role == 'ADMIN'}">
@@ -46,12 +49,15 @@
                         <a class="nav-link" href="<c:url value = "/Controller?command=go_to_all_relevant_vacancies_page_command"/>">Vacancies</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Users</a>
+                        <a class="nav-link" href="<c:url value="/Controller?command=go_to_all_users_page_command"/> ">Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<c:url value="/Controller?command=go_to_admin_account_page_command"/> ">My profile</a>
                     </li>
                 </c:if>
                 <c:if test="${sessionScope.role != 'GUEST'}">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">My profile</a>
+                        <a href="<c:url value="/Controller?command=log_out_command"/> " class="nav-link">Log Out</a>
                     </li>
                 </c:if>
             </ul>

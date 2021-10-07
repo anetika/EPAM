@@ -35,7 +35,7 @@ public class MailSender {
 
     public void sendRegistrationMessage(String email) {
         try {
-            initMessage(REGISTRATION_SUBJECT, "", email);
+            initMessage(REGISTRATION_SUBJECT, buildRegisterLink(email), email);
             Transport.send(message);
         } catch (MessagingException e) {
             //log
@@ -44,10 +44,10 @@ public class MailSender {
 
     public void sendForgetPasswordMessage(String email){
         try{
-            initMessage(FORGET_PASSWORD_SUBJECT, "", email);
+            initMessage(FORGET_PASSWORD_SUBJECT, buildForgetPasswordLink(email), email);
             Transport.send(message);
         } catch (MessagingException e) {
-            e.printStackTrace();
+            //log
         }
     }
 

@@ -1,7 +1,5 @@
 package edu.epam.webproject.entity;
 
-import edu.epam.webproject.model.dao.UserDao;
-import edu.epam.webproject.model.dao.impl.UserDaoImpl;
 
 public class User extends Entity {
     private long id;
@@ -103,10 +101,10 @@ public class User extends Entity {
 
     public enum UserStatus {
         APPROVED(1),
-        REJECTED(2),
-        IN_PROGRESS(3);
+        REJECTED(3),
+        IN_PROGRESS(2);
         private final int value;
-        private UserStatus(int value){
+        UserStatus(int value){
             this.value = value;
         }
         public int getValue(){
@@ -119,7 +117,7 @@ public class User extends Entity {
         USER(2),
         GUEST(3);
         private final int value;
-        private Role(int value){
+        Role(int value){
             this.value = value;
         }
         public int getValue(){

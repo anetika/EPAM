@@ -21,6 +21,8 @@ public class UserDaoImpl implements UserDao {
     private static final String FIND_ALL_USERS_SQL = "SELECT users.user_id, users.login, users.email, users.icon, users.password, roles.role, user_statuses.status " +
             "FROM users JOIN roles ON users.role_id = roles.role_id JOIN user_statuses ON users.status_id = user_statuses.status_id WHERE users.role_id <> 1";
     private static final String CHANGE_USER_STATUS_BY_EMAIL_SQL = "UPDATE users SET status_id = ? WHERE email = ?";
+    private static final String UPDATE_USER_ICON_BY_ID_SQL = "UPDATE users SET icon = ? WHERE user_id = ?";
+    private static final String CHANGE_USER_PASSWORD_BY_EMAIL_SQL = "UPDATE users SET password = ? WHERE email = ?";
     private UserDaoImpl(){}
 
     public static UserDaoImpl getInstance() {
@@ -72,7 +74,7 @@ public class UserDaoImpl implements UserDao {
     public List<User> findAllUsers() throws DaoException {
         List<User> userList = new ArrayList<>();
         try (Connection connection = pool.getConnection();
-             Statement statement = pool.getConnection().createStatement()) {
+             Statement statement = connection.createStatement()) {
              ResultSet resultSet = statement.executeQuery(FIND_ALL_USERS_SQL);
              while (resultSet.next()){
                  userList.add(createUser(resultSet));
@@ -86,12 +88,36 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void changeUserStatusByEmail(String email, int status) throws DaoException {
         try(Connection connection = pool.getConnection();
-            PreparedStatement statement = connection.prepareStatement(CHANGE_USER_STATUS_BY_EMAIL_SQL);) {
-            statement.setInt(1, User.UserStatus.APPROVED.getValue());
+            PreparedStatement statement = connection.prepareStatement(CHANGE_USER_STATUS_BY_EMAIL_SQL)) {
+            statement.setInt(1, status);
             statement.setString(2, email);
             statement.execute();
         } catch (SQLException e) {
             throw new DaoException("Unable to handle UserDao.activateAccountByEmail", e);
+        }
+    }
+
+    @Override
+    public void updateUserIcon(long id, String icon) throws DaoException {
+        try(Connection connection = pool.getConnection();
+            PreparedStatement statement = connection.prepareStatement(UPDATE_USER_ICON_BY_ID_SQL)){
+            statement.setString(1, icon);
+            statement.setLong(2, id);
+            statement.execute();
+        } catch (SQLException e) {
+            throw new DaoException("Unable to handle UserDao.updateUserIcon", e);
+        }
+    }
+
+    @Override
+    public void changeUserPasswordByEmail(String email, String password) throws DaoException {
+        try(Connection connection = pool.getConnection();
+            PreparedStatement statement = connection.prepareStatement(CHANGE_USER_PASSWORD_BY_EMAIL_SQL)) {
+            statement.setString(1, password);
+            statement.setString(2, email);
+            statement.execute();
+        } catch (SQLException e) {
+            throw new DaoException("Unable to handle UserDao.changeUserPasswordByEmail", e);
         }
     }
 
@@ -102,7 +128,7 @@ public class UserDaoImpl implements UserDao {
         user.setLogin(resultSet.getString(ColumnName.LOGIN));
         user.setEmail(resultSet.getString(ColumnName.EMAIL));
         user.setRole(User.Role.valueOf(resultSet.getString(ColumnName.ROLE).toUpperCase()));
-        user.setUserStatus(User.UserStatus.valueOf(resultSet.getString(ColumnName.USER_STATUS).toUpperCase()));
+        user.setUserStatus(User.UserStatus.valueOf(resultSet.getString(ColumnName.STATUS).toUpperCase()));
         user.setIcon(resultSet.getString(ColumnName.ICON));
         return user;
     }

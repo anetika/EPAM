@@ -11,4 +11,6 @@ public interface UserDao {
     boolean signUp(String login, String email, String password) throws DaoException;
     List<User> findAllUsers() throws DaoException;
     void changeUserStatusByEmail(String email, int status) throws DaoException;
+    void updateUserIcon(long id, String icon) throws DaoException;
+    void changeUserPasswordByEmail(String email, String password) throws DaoException;
 }

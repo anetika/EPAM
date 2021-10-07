@@ -6,6 +6,7 @@ import edu.epam.webproject.controller.command.RequestParameter;
 import edu.epam.webproject.controller.command.Router;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,6 +15,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet
+@MultipartConfig(fileSizeThreshold = 1024 * 1024,
+                maxFileSize = 5 * 1024 * 1024,
+                maxRequestSize = 25 * 1024 * 1024)
 public class Controller extends HttpServlet {
     private final CommandProvider commandProvider = CommandProvider.getInstance();
 

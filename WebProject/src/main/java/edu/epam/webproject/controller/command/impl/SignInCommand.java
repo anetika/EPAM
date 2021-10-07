@@ -31,8 +31,12 @@ public class SignInCommand implements Command {
                 if (session.getAttribute(SessionAttribute.DUPLICATE_EMAIL) != null){
                     session.removeAttribute(SessionAttribute.DUPLICATE_EMAIL);
                 }
-                router = new Router(PagePath.USER_ACCOUNT_PAGE, Router.RouterType.REDIRECT);
-            }else{
+                if (user.getRole() == User.Role.USER) {
+                    router = new Router(PagePath.USER_ACCOUNT_PAGE, Router.RouterType.REDIRECT);
+                } else {
+                    router = new Router(PagePath.ADMIN_ACCOUNT_PAGE, Router.RouterType.REDIRECT);
+                }
+            }else {
                 router = new Router(PagePath.SIGN_IN_PAGE, Router.RouterType.REDIRECT);
             }
         } catch (ServiceException e) {

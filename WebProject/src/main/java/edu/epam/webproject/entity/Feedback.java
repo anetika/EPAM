@@ -102,7 +102,8 @@ public class Feedback extends Entity {
 
     public enum FeedbackStatus {
         RELEVANT(1),
-        IRRELEVANT(2);
+        IRRELEVANT(2),
+        IN_PROCESS(3);
 
         private final int value;
         private FeedbackStatus(int value){
