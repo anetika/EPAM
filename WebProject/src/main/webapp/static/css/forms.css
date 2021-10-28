@@ -1,4 +1,4 @@
-form{
+.main_form{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -15,4 +15,7 @@ form{
 #submit-button{
     margin-top: 20px;
     margin-bottom: 20px;
+}
+.mail-send{
+    font-size: 20px;
 }

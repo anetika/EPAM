@@ -1,4 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${sessionScope.locale}"/>
+<fmt:setBundle basename="locale"/>
+<%@ page import="edu.epam.webproject.controller.command.PagePath" %>
 <%--
   Created by IntelliJ IDEA.
   User: HP
@@ -7,10 +11,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
+<c:set var="prev_page" value="${PagePath.ADMIN_ACCOUNT_PAGE}" scope="session"/>
+<fmt:message key="signUp.login" var="signUp_login"/>
 <html>
 <head>
     <title>Account</title>
-    <link rel="stylesheet" href="<c:url value="../../static/css/accountss.css"/>">
+    <link rel="stylesheet" href="<c:url value="../../static/css/account.css"/>">
     <script src="<c:url value="../../static/js/account.js"/> "></script>
 </head>
 <body>
@@ -69,7 +75,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Login</h6>
+                                <h6 class="mb-0">${signUp_login}</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 ${user.login}

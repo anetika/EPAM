@@ -57,3 +57,16 @@ span.input-group-addon i {
 .login-button{
     margin-top: 5px;
 }
+.control-label{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.logo_input{
+    display: none;
+}
+.submit-button-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

@@ -1,0 +1,12 @@
+<taglib>
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>2.0</jsp-version>
+    <short-name>localtag</short-name>
+    <uri>customtag</uri>
+
+    <tag>
+        <name>localization</name>
+        <tag-class>edu.epam.webproject.tag.LocalizationTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+</taglib>

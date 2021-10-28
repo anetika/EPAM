@@ -5,8 +5,11 @@ import edu.epam.webproject.exception.ServiceException;
 import edu.epam.webproject.model.service.ServiceProvider;
 import edu.epam.webproject.model.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ChangeUserPasswordCommand implements Command {
+    private static final Logger logger = LogManager.getLogger();
     @Override
     public Router execute(HttpServletRequest request) {
         Router router;
@@ -25,8 +28,9 @@ public class ChangeUserPasswordCommand implements Command {
                 router = new Router(PagePath.CHANGE_PASSWORD_PAGE, Router.RouterType.FORWARD);
             }
         } catch (ServiceException e) {
+            logger.error("Internal server error in ChangeUserPasswordCommand", e);
             request.getSession().setAttribute(RequestAttribute.EXCEPTION, e);
-            router = new Router(PagePath.DEFAULT_PAGE, Router.RouterType.REDIRECT);
+            router = new Router(PagePath.ERROR_500_PAGE, Router.RouterType.REDIRECT);
         }
         return router;
     }

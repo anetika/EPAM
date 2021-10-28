@@ -19,6 +19,7 @@ public class RequestParameter {
     public static final String RECRUITER_ID = "recruiter_id";
     public static final String LETTER = "letter";
     public static final String DATE = "date";
+    public static final String LOCALE = "locale";
 
     private RequestParameter(){}
 }

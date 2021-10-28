@@ -4,22 +4,35 @@ import edu.epam.webproject.entity.Vacancy;
 import edu.epam.webproject.exception.DaoException;
 import edu.epam.webproject.model.connection.CustomConnectionPool;
 import edu.epam.webproject.model.dao.VacancyDao;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The class that implements Vacancy dao
+ */
 public class VacancyDaoImpl implements VacancyDao {
+    private static final Logger logger = LogManager.getLogger();
     private final CustomConnectionPool pool = CustomConnectionPool.getInstance();
     private static final VacancyDaoImpl instance = new VacancyDaoImpl();
     private static final String FIND_ALL_VACANCIES_SQL = "SELECT vacancies.vacancy_id, vacancies.logo, vacancies.position, vacancies.company, vacancies.salary, vacancies.description, vacancies.status_id, vacancy_status.status, vacancies.feedback_counter " +
             "FROM vacancies JOIN vacancy_status ON vacancies.status_id = vacancy_status.status_id WHERE vacancies.status_id = ?";
-    private static final String INSERT_NEW_VACANCY_SQL = "INSERT INTO vacancies (logo, vacancies.position, company, salary, description, status_id, recruiter_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    private static final String INSERT_NEW_VACANCY_SQL = "INSERT INTO vacancies (logo, vacancies.position, company, salary, description, status_id, recruiter_id, feedback_counter) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String CHANGE_VACANCY_STATUS_SQL = "UPDATE vacancies SET status_id = ? WHERE vacancy_id = ?";
-    private static final String FIND_VACANCIES_BY_RECRUITER_ID_SQL = "SELECT vacancies.vacancy_id, vacancies.logo, vacancies.position, vacancies.company, vacancies.salary, vacancies.description, vacancies.status_id, vacancies.recruiter_id" +
+    private static final String FIND_VACANCIES_BY_RECRUITER_ID_SQL = "SELECT vacancies.vacancy_id, vacancies.logo, vacancies.position, vacancies.company, vacancies.salary, vacancies.description, vacancies.recruiter_id " +
             "FROM vacancies WHERE vacancies.recruiter_id = ?";
+    private static final String FIND_ALL_VACANCIES_EXCEPT_USERS_SQL = "SELECT vacancies.vacancy_id, vacancies.logo, vacancies.position, vacancies.company, vacancies.salary, vacancies.description, vacancies.recruiter_id " +
+            "FROM vacancies WHERE vacancies.recruiter_id <> ?";
 
+    /**
+     * Gets instance
+     *
+     * @return the instance of {@link VacancyDao}
+     */
     public static VacancyDaoImpl getInstance() {
         return instance;
     }
@@ -35,7 +48,8 @@ public class VacancyDaoImpl implements VacancyDao {
                  vacancies.add(createVacancy(resultSet));
              }
         } catch (SQLException e) {
-             throw new DaoException("Unable to handle VacancyDao.getVacanciesByStatus request", e);
+            logger.error("Unable to handle VacancyDao.getVacanciesByStatus request", e);
+            throw new DaoException("Unable to handle VacancyDao.getVacanciesByStatus request", e);
         }
         return vacancies;
     }
@@ -51,8 +65,10 @@ public class VacancyDaoImpl implements VacancyDao {
             statement.setString(AddNewVacancyParameterIndex.DESCRIPTION, description);
             statement.setInt(AddNewVacancyParameterIndex.STATUS_ID, Vacancy.VacancyStatus.IRRELEVANT.getValue());
             statement.setLong(AddNewVacancyParameterIndex.RECRUITER_ID, recruiter_id);
+            statement.setInt(AddNewVacancyParameterIndex.FEEDBACK_COUNTER, 0);
             statement.execute();
         } catch (SQLException e) {
+            logger.error("Unable to handle VacancyDao.addNewVacancy request", e);
             throw new DaoException("Unable to handle VacancyDao.addNewVacancy request", e);
         }
     }
@@ -65,6 +81,7 @@ public class VacancyDaoImpl implements VacancyDao {
             statement.setLong(2, id);
             statement.execute();
         } catch (SQLException e) {
+            logger.error("Unable to handle VacancyDao.changeVacancyStatus", e);
             throw new DaoException("Unable to handle VacancyDao.changeVacancyStatus", e);
         }
     }
@@ -80,7 +97,25 @@ public class VacancyDaoImpl implements VacancyDao {
                 vacancies.add(createVacancy(resultSet));
             }
         } catch (SQLException e) {
+            logger.error("Unable to handle VacancyDao.findVacanciesByRecruiterId", e);
             throw new DaoException("Unable to handle VacancyDao.findVacanciesByRecruiterId", e);
+        }
+        return vacancies;
+    }
+
+    @Override
+    public List<Vacancy> findAllVacanciesExceptUsers(long id) throws DaoException {
+        List<Vacancy> vacancies = new ArrayList<>();
+        try(Connection connection = pool.getConnection();
+            PreparedStatement statement = connection.prepareStatement(FIND_ALL_VACANCIES_EXCEPT_USERS_SQL)){
+            statement.setLong(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()){
+                vacancies.add(createVacancy(resultSet));
+            }
+        } catch (SQLException e) {
+            logger.error("Unable to handle VacancyDao.findAllVacanciesExceptUsers", e);
+            throw new DaoException("Unable to handle VacancyDao.findAllVacanciesExceptUsers", e);
         }
         return vacancies;
     }
@@ -93,7 +128,6 @@ public class VacancyDaoImpl implements VacancyDao {
         vacancy.setCompany(resultSet.getString(ColumnName.COMPANY));
         vacancy.setSalary(resultSet.getBigDecimal(ColumnName.SALARY));
         vacancy.setDescription(resultSet.getString(ColumnName.DESCRIPTION));
-        vacancy.setStatus(Vacancy.VacancyStatus.valueOf(resultSet.getString(ColumnName.STATUS)));
         return vacancy;
     }
 
@@ -105,5 +139,6 @@ public class VacancyDaoImpl implements VacancyDao {
         private static final int DESCRIPTION = 5;
         private static final int STATUS_ID = 6;
         private static final int RECRUITER_ID = 7;
+        private static final int FEEDBACK_COUNTER = 8;
     }
 }

@@ -9,12 +9,15 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
 public class UploadUserIconCommand implements Command {
+    private static final Logger logger = LogManager.getLogger();
     private static final String UPLOAD_ICON_DIR = "/static/img/icon";
 
     @Override
@@ -52,6 +55,7 @@ public class UploadUserIconCommand implements Command {
                 router = new Router(PagePath.GO_TO_USER_ACCOUNT_PAGE_COMMAND, Router.RouterType.FORWARD);
             }
         } catch (ServletException | IOException | ServiceException e) {
+            logger.error("Internal server error in UploadUserIconCommand", e);
             session.setAttribute(SessionAttribute.EXCEPTION, e);
             router = new Router(PagePath.ERROR_500_PAGE, Router.RouterType.REDIRECT);
         }

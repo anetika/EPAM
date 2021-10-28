@@ -7,8 +7,11 @@ import edu.epam.webproject.exception.ServiceException;
 import edu.epam.webproject.model.service.ServiceProvider;
 import edu.epam.webproject.model.service.VacancyService;
 import jakarta.servlet.http.HttpServletRequest;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ChangeVacancyStatusCommand implements Command {
+    private static final Logger logger = LogManager.getLogger();
     @Override
     public Router execute(HttpServletRequest request) {
         Router router;
@@ -26,14 +29,15 @@ public class ChangeVacancyStatusCommand implements Command {
             service.changeVacancyStatus(status, id);
             if (role == User.Role.ADMIN) {
                 if (status == Vacancy.VacancyStatus.IRRELEVANT){
-                    router = new Router(PagePath.GO_TO_ALL_RELEVANT_VACANCIES_PAGE_COMMAND, Router.RouterType.REDIRECT);
-                }else{
                     router = new Router(PagePath.GO_TO_ALL_IRRELEVANT_VACANCIES_PAGE_COMMAND, Router.RouterType.REDIRECT);
+                }else{
+                    router = new Router(PagePath.GO_TO_ALL_RELEVANT_VACANCIES_PAGE_COMMAND, Router.RouterType.REDIRECT);
                 }
             } else {
                 router = new Router(PagePath.GO_TO_USER_ACCOUNT_PAGE_COMMAND, Router.RouterType.REDIRECT);
             }
         } catch (ServiceException e) {
+            logger.error("Internal server error in ChangeVacancyStatusCommand", e);
             request.getSession().setAttribute(RequestAttribute.EXCEPTION, e);
             router = new Router(PagePath.ERROR_500_PAGE, Router.RouterType.REDIRECT);
         }

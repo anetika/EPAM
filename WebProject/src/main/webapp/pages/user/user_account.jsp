@@ -1,4 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${sessionScope.locale}"/>
+<fmt:setBundle basename="locale"/>
+<%@ page import="edu.epam.webproject.controller.command.PagePath" %>
 <%--
   Created by IntelliJ IDEA.
   User: HP
@@ -7,11 +11,22 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8"%>
+<c:set var="prev_page" value="${PagePath.GO_TO_USER_ACCOUNT_PAGE_COMMAND}" scope="session"/>
+<fmt:message key="header.vacancies" var="header_vacancies"/>
+<fmt:message key="all_vacancies.company" var="all_vacancies_company"/>
+<fmt:message key="all_vacancies.description" var="all_vacancies_description"/>
+<fmt:message key="all_vacancies.actions" var="all_vacancies_actions"/>
+<fmt:message key="offer_vacancy.position" var="offer_vacancy_position"/>
+<fmt:message key="offer_vacancy.salary" var="offer_vacancy_salary"/>
+<fmt:message key="all_users.icon" var="all_users_icon"/>
+<fmt:message key="user_account.date" var="user_account_date"/>
+<fmt:message key="signUp.login" var="signUp_login"/>
+<fmt:message key="user_account.logo" var="user_account_logo"/>
 <html>
 <head>
     <title>Account</title>
-    <link rel="stylesheet" href="<c:url value="../../static/css/accountss.css"/>">
-    <script src="<c:url value="../../static/js/account.js"/> "></script>
+    <link rel="stylesheet" href="<c:url value="/static/css/account.css"/>">
+    <script src="<c:url value="/static/js/account.js"/> "></script>
 </head>
 <body>
 <jsp:include page="../header.jsp"/>
@@ -70,7 +85,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Login</h6>
+                                    <h6 class="mb-0">${signUp_login}</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     ${user.login}
@@ -83,6 +98,93 @@
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     ${user.email}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!--Vacancies list-->
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center" scope="col">${user_account_logo}</th>
+                                            <th scope="col">${all_vacancies_company}</th>
+                                            <th scope="col">${offer_vacancy_position}</th>
+                                            <th scope="col">${offer_vacancy_salary}</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <c:forEach var="vacancy" items="${requestScope.vacancies_list}">
+                                            <tr class="inner-box">
+                                                <td>
+                                                    <div class="event-img">
+                                                        <c:if test="${vacancy.logo == null}">
+                                                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Default logo" class="logo"/>
+                                                        </c:if>
+                                                        <c:if test="${vacancy.logo != null}">
+                                                            <img src="<c:url value="${vacancy.logo}"/>" alt="Vacancy logo" class="logo">
+                                                        </c:if>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="event-wrap">
+                                                        <h3>${vacancy.company}</h3>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="event-wrap">
+                                                        <h3>${vacancy.position}</h3>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="event-wrap">
+                                                        <h3>${vacancy.salary}$</h3>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Feedbacks list-->
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center" scope="col">${signUp_login}</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">${user_account_date}</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <c:forEach var="feedback" items="${requestScope.feedbacks_list}">
+                                            <tr class="inner-box">
+                                                <td>
+                                                    <div class="event-wrap">
+                                                        <h3>${feedback.vacancy.company}</h3>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="event-wrap">
+                                                        <h3>${feedback.vacancy.position}</h3>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="event-wrap">
+                                                        <h3>${feedback.date}</h3>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

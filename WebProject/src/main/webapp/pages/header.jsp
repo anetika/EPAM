@@ -8,6 +8,18 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="mytag" uri="customtag" %>
+<fmt:setLocale value="${sessionScope.locale}"/>
+<fmt:setBundle basename="locale"/>
+<fmt:message key="header.signIn" var="header_signIn"/>
+<fmt:message key="header.signUp" var="header_signUp"/>
+<fmt:message key="header.offerVacancy" var="header_offerVacancy"/>
+<fmt:message key="header.myProfile" var="header_myProfile"/>
+<fmt:message key="header.pendingVacancies" var="header_pendingVacancies"/>
+<fmt:message key="header.vacancies" var="header_vacancies"/>
+<fmt:message key="header.users" var="header_users"/>
+<fmt:message key="header.logOut" var="header_logOut"/>
+<fmt:message key="header.findJob" var="header_findJob"/>
 <html>
 <head>
     <title>Header</title>
@@ -24,42 +36,47 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <c:if test="${sessionScope.role == 'GUEST'}">
                     <li class="nav-item">
-                        <a class="nav-link" href=" <c:url value="/Controller?command=go_to_sign_up_page_command"/>">Sign Up</a>
+                        <a class="nav-link" href=" <c:url value="/Controller?command=go_to_sign_up_page_command"/>">${header_signUp}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value="/Controller?command=go_to_sign_in_page_command"/>">Sign In</a>
+                        <a class="nav-link" href="<c:url value="/Controller?command=go_to_sign_in_page_command"/>">${header_signIn}</a>
                     </li>
                 </c:if>
                 <c:if test="${sessionScope.role == 'USER'}">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Find job</a>
+                        <a class="nav-link" href="<c:url value="/Controller?command=go_to_find_job_page_command"/>">${header_findJob}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value="/Controller?command=go_to_offer_vacancy_page_command"/> ">Offer vacancy</a>
+                        <a class="nav-link" href="<c:url value="/Controller?command=go_to_offer_vacancy_page_command"/>">${header_offerVacancy}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value="/Controller?command=go_to_user_account_page_command"/> ">My profile</a>
+                        <a class="nav-link" href="<c:url value="/Controller?command=go_to_user_account_page_command"/> ">${header_myProfile}</a>
                     </li>
                 </c:if>
                 <c:if test="${sessionScope.role == 'ADMIN'}">
                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value = "/Controller?command=go_to_all_irrelevant_vacancies_page_command"/>">Pending vacancies</a>
+                        <a class="nav-link" href="<c:url value = "/Controller?command=go_to_all_irrelevant_vacancies_page_command"/>">${header_pendingVacancies}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value = "/Controller?command=go_to_all_relevant_vacancies_page_command"/>">Vacancies</a>
+                        <a class="nav-link" href="<c:url value = "/Controller?command=go_to_all_relevant_vacancies_page_command"/>">${header_vacancies}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value="/Controller?command=go_to_all_users_page_command"/> ">Users</a>
+                        <a class="nav-link" href="<c:url value="/Controller?command=go_to_all_users_page_command"/>">${header_users}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value="/Controller?command=go_to_admin_account_page_command"/> ">My profile</a>
+                        <a class="nav-link" href="<c:url value="/Controller?command=go_to_admin_account_page_command"/> ">${header_myProfile}</a>
                     </li>
                 </c:if>
                 <c:if test="${sessionScope.role != 'GUEST'}">
                     <li class="nav-item">
-                        <a href="<c:url value="/Controller?command=log_out_command"/> " class="nav-link">Log Out</a>
+                        <a href="<c:url value="/Controller?command=log_out_command"/> " class="nav-link">${header_logOut}</a>
                     </li>
                 </c:if>
+                <li class="nav-item">
+                    <form action="<c:url value="/Controller"/> " method="post">
+                        <mytag:localization />
+                    </form>
+                </li>
             </ul>
         </div>
     </div>

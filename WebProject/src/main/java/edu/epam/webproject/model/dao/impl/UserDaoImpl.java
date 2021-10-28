@@ -5,13 +5,19 @@ import edu.epam.webproject.exception.DaoException;
 import edu.epam.webproject.model.connection.CustomConnectionPool;
 import edu.epam.webproject.model.dao.UserDao;
 import edu.epam.webproject.util.PasswordEncryptor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * The class that implements User dao
+ */
 public class UserDaoImpl implements UserDao {
+    private static final Logger logger = LogManager.getLogger();
     private final CustomConnectionPool pool = CustomConnectionPool.getInstance();
     private static final UserDaoImpl instance = new UserDaoImpl();
     private static final String FIND_USER_BY_EMAIL_SQL = "SELECT users.user_id, users.login, users.email, users.icon, users.password, roles.role, user_statuses.status " +
@@ -23,8 +29,14 @@ public class UserDaoImpl implements UserDao {
     private static final String CHANGE_USER_STATUS_BY_EMAIL_SQL = "UPDATE users SET status_id = ? WHERE email = ?";
     private static final String UPDATE_USER_ICON_BY_ID_SQL = "UPDATE users SET icon = ? WHERE user_id = ?";
     private static final String CHANGE_USER_PASSWORD_BY_EMAIL_SQL = "UPDATE users SET password = ? WHERE email = ?";
+    private static final String IS_USER_EXISTS_SQL = "SELECT users.user_id FROM users WHERE users.email = ?";
     private UserDaoImpl(){}
 
+    /**
+     * Gets instance
+     *
+     * @return the instance of {@link UserDao}
+     */
     public static UserDaoImpl getInstance() {
         return instance;
     }
@@ -44,6 +56,7 @@ public class UserDaoImpl implements UserDao {
                 }
             }
         } catch (SQLException e) {
+            logger.error("Unable to handle UserDao.signIn request", e);
             throw new DaoException("Unable to handle UserDao.signIn request", e);
         }
         return Optional.ofNullable(user);
@@ -65,6 +78,7 @@ public class UserDaoImpl implements UserDao {
             if (e.getErrorCode() == DUPLICATE_EMAIL_ERROR_CODE) {
                 return false;
             } else {
+                logger.error("Unable to handle UserDao.signUp request", e);
                 throw new DaoException("Unable to handle UserDao.signUp request", e);
             }
         }
@@ -80,6 +94,7 @@ public class UserDaoImpl implements UserDao {
                  userList.add(createUser(resultSet));
              }
         } catch (SQLException e) {
+            logger.error("Unable to handle UserDao.findAllUsers", e);
             throw new DaoException("Unable to handle UserDao.findAllUsers", e);
         }
         return userList;
@@ -93,6 +108,7 @@ public class UserDaoImpl implements UserDao {
             statement.setString(2, email);
             statement.execute();
         } catch (SQLException e) {
+            logger.error("Unable to handle UserDao.activateAccountByEmail", e);
             throw new DaoException("Unable to handle UserDao.activateAccountByEmail", e);
         }
     }
@@ -105,6 +121,7 @@ public class UserDaoImpl implements UserDao {
             statement.setLong(2, id);
             statement.execute();
         } catch (SQLException e) {
+            logger.error("Unable to handle UserDao.updateUserIcon", e);
             throw new DaoException("Unable to handle UserDao.updateUserIcon", e);
         }
     }
@@ -117,8 +134,43 @@ public class UserDaoImpl implements UserDao {
             statement.setString(2, email);
             statement.execute();
         } catch (SQLException e) {
+            logger.error("Unable to handle UserDao.changeUserPasswordByEmail", e);
             throw new DaoException("Unable to handle UserDao.changeUserPasswordByEmail", e);
         }
+    }
+
+    @Override
+    public Optional<User> isUserExists(String email) throws DaoException {
+        User user = null;
+        try(Connection connection = pool.getConnection();
+            PreparedStatement statement = connection.prepareStatement(IS_USER_EXISTS_SQL)){
+            statement.setString(1, email);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()){
+                user = new User();
+                user.setId(resultSet.getLong(ColumnName.USER_ID));
+            }
+        } catch (SQLException e) {
+            logger.error("Unable to handle UserDao.isUserExists", e);
+            throw new DaoException("Unable to handle UserDao.isUserExists", e);
+        }
+        return Optional.ofNullable(user);
+    }
+
+    @Override
+    public User getUserByEmail(String email) throws DaoException {
+        User user = null;
+        try(Connection connection = pool.getConnection();
+            PreparedStatement statement = connection.prepareStatement(FIND_USER_BY_EMAIL_SQL)){
+            statement.setString(1, email);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()){
+                user = createUser(resultSet);
+            }
+        } catch (SQLException e) {
+            throw new DaoException("Unable to handle UserDao.getUserByEmail", e);
+        }
+        return user;
     }
 
 

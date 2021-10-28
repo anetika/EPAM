@@ -31,10 +31,10 @@ class ConnectionFactory {
             Class.forName(driver);
 
         }catch (ClassNotFoundException e) {
-            logger.log(Level.FATAL, "Unable to register driver: " + driver);
+            logger.fatal("Unable to register driver: " + driver);
             throw new RuntimeException("Unable to register driver: \" + driverName", e);
         } catch (IOException e){
-            logger.log(Level.FATAL, "Unable to find properties file: " + RESOURCE_FILE);
+            logger.fatal("Unable to find properties file: " + RESOURCE_FILE);
             throw new RuntimeException("Unable to find properties file: " + RESOURCE_FILE, e);
         }
         URL = properties.getProperty(DB_URL);

@@ -12,20 +12,28 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * The class that implements Feedback service
+ */
 public class FeedbackServiceImpl implements FeedbackService {
     private final FeedbackDao feedbackDao = FeedbackDaoImpl.getInstance();
     private static final FeedbackServiceImpl instance = new FeedbackServiceImpl();
 
     private FeedbackServiceImpl(){}
 
+    /**
+     * Gets instance
+     *
+     * @return the instance of {@link FeedbackService}
+     */
     public static FeedbackServiceImpl getInstance(){
         return instance;
     }
 
     @Override
-    public void addNewFeedback(long vacancy_id, String letter, Date date) throws ServiceException {
+    public void addNewFeedback(long user_id, long vacancy_id, String letter, Date date) throws ServiceException {
         try {
-            feedbackDao.addNewFeedback(vacancy_id, letter, date);
+            feedbackDao.addNewFeedback(user_id, vacancy_id, letter, date);
         } catch (DaoException e) {
             throw new ServiceException("Unable to execute addNewVacancy request", e);
         }
@@ -37,6 +45,15 @@ public class FeedbackServiceImpl implements FeedbackService {
             return feedbackDao.findFeedbacksByStatus(status);
         } catch (DaoException e) {
             throw new ServiceException("Unable to execute findFeedbackByStatus request", e);
+        }
+    }
+
+    @Override
+    public List<Feedback> findFeedbacksByUserId(long id) throws ServiceException {
+        try {
+            return feedbackDao.findFeedbacksByUserId(id);
+        } catch (DaoException e) {
+            throw new ServiceException("Unable to execute findFeedbackByUserId request", e);
         }
     }
 }

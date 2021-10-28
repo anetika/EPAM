@@ -8,6 +8,7 @@ public class RequestAttribute {
     public static final String VACANCIES_LIST = "vacancies_list";
     public static final String VACANCY_ID = "vacancy_id";
     public static final String FEEDBACKS_LIST = "feedbacks_list";
+    public static final String INCORRECT_DATA = "incorrect_data";
 
     private RequestAttribute(){}
 }

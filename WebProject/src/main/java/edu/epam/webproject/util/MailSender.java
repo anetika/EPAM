@@ -8,12 +8,18 @@ import jakarta.mail.Session;
 import jakarta.mail.Transport;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+/**
+ * The class that is responsible for sending mails
+ */
 public class MailSender {
+    private static final Logger logger = LogManager.getLogger();
     private MimeMessage message;
     private static final String RESOURCE_FILE = "\\mail.properties";
     private static final Properties properties = new Properties();
@@ -29,25 +35,35 @@ public class MailSender {
         try(InputStream stream = MailSender.class.getClassLoader().getResourceAsStream(RESOURCE_FILE)) {
             properties.load(stream);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Problems with email configuration", e);
         }
     }
 
+    /**
+     * Sends registration message
+     *
+     * @param email - user email
+     */
     public void sendRegistrationMessage(String email) {
         try {
             initMessage(REGISTRATION_SUBJECT, buildRegisterLink(email), email);
             Transport.send(message);
         } catch (MessagingException e) {
-            //log
+            logger.error("Unable to send registrationMessage", e);
         }
     }
 
+    /**
+     * Sends forget password message
+     *
+     * @param email - user email
+     */
     public void sendForgetPasswordMessage(String email){
         try{
             initMessage(FORGET_PASSWORD_SUBJECT, buildForgetPasswordLink(email), email);
             Transport.send(message);
         } catch (MessagingException e) {
-            //log
+            logger.error("Unable to send forgetPasswordMessage", e);
         }
     }
 

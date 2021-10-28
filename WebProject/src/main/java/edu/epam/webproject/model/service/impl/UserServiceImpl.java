@@ -7,16 +7,26 @@ import edu.epam.webproject.model.dao.UserDao;
 import edu.epam.webproject.model.dao.impl.UserDaoImpl;
 import edu.epam.webproject.model.service.UserService;
 import edu.epam.webproject.util.PasswordEncryptor;
+import edu.epam.webproject.validator.UserValidator;
 
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * The class that implements User service
+ */
 public class UserServiceImpl implements UserService {
     private final UserDao userDao = UserDaoImpl.getInstance();
     private static final UserServiceImpl instance = new UserServiceImpl();
+    private final UserValidator validator = new UserValidator();
 
     private UserServiceImpl(){}
 
+    /**
+     * Gets instance
+     *
+     * @return the instance of {@link UserService}
+     */
     public static UserServiceImpl getInstance(){
         return instance;
     }
@@ -24,7 +34,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> signIn(String email, String password) throws ServiceException {
         try {
-            return userDao.signIn(email, password);
+            if (validator.validateEmail(email) && validator.validatePassword(password)) {
+                return userDao.signIn(email, password);
+            } else {
+                throw new ServiceException("Wrong input");
+            }
         } catch (DaoException e) {
             throw new ServiceException("Unable to execute signIn request", e);
         }
@@ -34,14 +48,18 @@ public class UserServiceImpl implements UserService {
     public Optional<User> signUp(String login, String email, String password) throws ServiceException {
         Optional<User> optionalUser;
         try {
-            PasswordEncryptor encryptor = PasswordEncryptor.getInstance();
-            String hashedPassword = encryptor.getHashedPassword(password);
-            if (userDao.signUp(login, email, hashedPassword)){
-                optionalUser = userDao.signIn(email, password);
-            }else {
-                optionalUser = Optional.empty();
+            if (validator.validateUser(login, email, password)) {
+                PasswordEncryptor encryptor = PasswordEncryptor.getInstance();
+                String hashedPassword = encryptor.getHashedPassword(password);
+                if (userDao.signUp(login, email, hashedPassword)) {
+                    optionalUser = userDao.signIn(email, password);
+                } else {
+                    optionalUser = Optional.empty();
+                }
+                return optionalUser;
+            } else {
+                throw new ServiceException("Wrong input");
             }
-            return optionalUser;
         } catch (DaoException e) {
             throw new ServiceException("Unable to execute a signUp request", e);
         }
@@ -97,5 +115,28 @@ public class UserServiceImpl implements UserService {
             throw new ServiceException("Unable to execute a changeUserPasswordByEmail request", e);
         }
         return result;
+    }
+
+    @Override
+    public boolean isUserExists(String email) throws ServiceException {
+        boolean result = false;
+        try{
+            Optional<User> optionalUser = userDao.isUserExists(email);
+            if (optionalUser.isPresent()){
+                result = true;
+            }
+        } catch (DaoException e) {
+            throw new ServiceException("Unable to execute isUserExists request", e);
+        }
+        return result;
+    }
+
+    @Override
+    public User getUserByEmail(String email) throws ServiceException {
+        try{
+            return userDao.getUserByEmail(email);
+        } catch (DaoException e) {
+            throw new ServiceException("Unable to execute getUserByEmail request", e);
+        }
     }
 }

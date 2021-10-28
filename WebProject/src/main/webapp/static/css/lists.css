@@ -29,7 +29,7 @@ body{margin-top:20px;}
     font-weight: 600;
     border-radius: inherit;
     border: inherit;
-    padding: 0px;
+    padding: 0;
     text-transform: capitalize !important;
 }
 .event-schedule-area .tab-area .nav-item .nav-link.active {
@@ -57,7 +57,6 @@ body{margin-top:20px;}
 .event-schedule-area .tab-area .tab-content .table tbody td .heading {
     font-size: 16px;
     text-transform: capitalize;
-    margin-bottom: 16px;
     font-weight: 500;
     color: #252525;
     margin-bottom: 6px;
@@ -84,7 +83,7 @@ body{margin-top:20px;}
 }
 
 .event-schedule-area-two .section-title .title-text h2 {
-    margin: 0px 0 15px;
+    margin: 0 0 15px;
 }
 
 .event-schedule-area-two ul.custom-tab {
@@ -197,7 +196,7 @@ body{margin-top:20px;}
 }
 .event-schedule-area-two .tab-content .table tbody tr td .event-wrap .categories a:before {
     content: "\f07b";
-    font-family: fontawesome;
+    font-family: fontawesome, serif;
     padding-right: 5px;
 }
 .event-schedule-area-two .tab-content .table tbody tr td .event-wrap .time span {
@@ -220,7 +219,7 @@ body{margin-top:20px;}
 }
 .event-schedule-area-two .tab-content .table tbody tr td .event-wrap .organizers a:before {
     content: "\f007";
-    font-family: fontawesome;
+    font-family: fontawesome, serif;
     padding-right: 5px;
 }
 .event-schedule-area-two .tab-content .table tbody tr td .primary-btn {
@@ -231,4 +230,8 @@ body{margin-top:20px;}
     width: 100px;
     height: 100px;
     border-radius: 8px;
+}
+.logo{
+    width: 70px;
+    height: 70px;
 }

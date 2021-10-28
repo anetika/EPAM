@@ -14,6 +14,7 @@ public class ColumnName {
     public static final String COMPANY = "company";
     public static final String SALARY = "salary";
     public static final String DESCRIPTION = "description";
+    public static final String FEEDBACK_STATUS_TYPE = "feedback_status_type";
     public static final String RECRUITER_ID = "recruiter_id";
     public static final String FEEDBACK_COUNTER = "feedback_counter";
     public static final String FEEDBACK_ID = "feedback_id";

@@ -10,6 +10,17 @@ public class Feedback extends Entity {
     private FeedbackStatus status;
     private Date date;
 
+    public Feedback(){}
+
+    public Feedback(long id, User employee, Vacancy vacancy, String letter, FeedbackStatus status, Date date) {
+        this.id = id;
+        this.employee = employee;
+        this.vacancy = vacancy;
+        this.letter = letter;
+        this.status = status;
+        this.date = date;
+    }
+
     public long getId() {
         return id;
     }
@@ -106,7 +117,7 @@ public class Feedback extends Entity {
         IN_PROCESS(3);
 
         private final int value;
-        private FeedbackStatus(int value){
+        FeedbackStatus(int value){
             this.value = value;
         }
 
