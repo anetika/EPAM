@@ -22,7 +22,7 @@ public class FeedbackDaoImpl implements FeedbackDao {
     private final CustomConnectionPool pool = CustomConnectionPool.getInstance();
     private static final FeedbackDaoImpl instance = new FeedbackDaoImpl();
     private static final String INSERT_NEW_FEEDBACK_SQL = "INSERT INTO feedbacks (user_id, vacancy_id, letter, status_id, date) VALUES (?, ?, ?, ?, ?)";
-    private static final String FIND_ALL_FEEDBACKS_SQL = "SELECT feedbacks.feedback_id, feedbacks.user_id, feedbacks.vacancy_id, feedbacks.letter, feedback_status.feedback_status_type, feedbacks.date " +
+    private static final String FIND_FEEDBACKS_BY_STATUS_SQL = "SELECT feedbacks.feedback_id, feedbacks.user_id, feedbacks.vacancy_id, feedbacks.letter, feedback_status.feedback_status_type, feedbacks.date " +
             "FROM feedbacks JOIN feedback_status ON feedbacks.status_id = feedback_status.feedback_status_id WHERE feedbacks.status_id = ?";
     private static final String FIND_EMPLOYEE_BY_ID_SQL = "SELECT users.login, users.email, users.icon FROM users WHERE users.user_id = ?";
     private static final String FIND_VACANCY_BY_ID_SQL = "SELECT vacancies.logo, vacancies.position, vacancies.company, vacancies.salary, vacancies.description" +
@@ -47,7 +47,7 @@ public class FeedbackDaoImpl implements FeedbackDao {
             statement.setLong(AddNewFeedbackParameterIndex.USER_ID, user_id);
             statement.setLong(AddNewFeedbackParameterIndex.VACANCY_ID, vacancy_id);
             statement.setString(AddNewFeedbackParameterIndex.LETTER, letter);
-            statement.setInt(AddNewFeedbackParameterIndex.FEEDBACK_STATUS, Feedback.FeedbackStatus.IN_PROCESS.getValue());
+            statement.setInt(AddNewFeedbackParameterIndex.FEEDBACK_STATUS, Feedback.FeedbackStatus.RELEVANT.getValue());
             statement.setDate(AddNewFeedbackParameterIndex.DATE, new java.sql.Date(date.getTime()));
             statement.execute();
         } catch (SQLException e) {
@@ -64,7 +64,8 @@ public class FeedbackDaoImpl implements FeedbackDao {
             connection = pool.getConnection();
             connection.setAutoCommit(false);
 
-            PreparedStatement findAllFeedbacksStatement = connection.prepareStatement(FIND_ALL_FEEDBACKS_SQL);
+            PreparedStatement findAllFeedbacksStatement = connection.prepareStatement(FIND_FEEDBACKS_BY_STATUS_SQL);
+            findAllFeedbacksStatement.setInt(1, status.getValue());
             ResultSet feedbackResultSet = findAllFeedbacksStatement.executeQuery();
             while (feedbackResultSet.next()){
                 long employeeId = feedbackResultSet.getLong(ColumnName.USER_ID);

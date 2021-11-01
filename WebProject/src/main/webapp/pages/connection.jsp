@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="<c:url value="/static/css/bootstrap-reboot.css.map"/>">
     <link rel="stylesheet" href="<c:url value="/static/css/bootstrap-grid.min.css.map"/>">
 
-    <link rel="stylesheet" href="<c:url value="/static/css/styless.css"/> ">
+    <link rel="stylesheet" href="<c:url value="/static/css/styles.css"/> ">
 
     <script src="<c:url value="/static/js/bootstrap.bundle.js" />"></script>
     <script src="<c:url value="/static/js/bootstrap.js" />"></script>

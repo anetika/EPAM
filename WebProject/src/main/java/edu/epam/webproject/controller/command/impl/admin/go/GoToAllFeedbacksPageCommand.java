@@ -17,7 +17,7 @@ public class GoToAllFeedbacksPageCommand implements Command {
     public Router execute(HttpServletRequest request) {
         Router router;
 
-        Feedback.FeedbackStatus status = Feedback.FeedbackStatus.valueOf(request.getParameter(RequestParameter.STATUS));
+        Feedback.FeedbackStatus status = Feedback.FeedbackStatus.RELEVANT;
 
         ServiceProvider provider = ServiceProvider.getInstance();
         FeedbackService service = provider.getFeedbackService();

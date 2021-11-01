@@ -45,13 +45,13 @@ input::-webkit-input-placeholder {
     margin: 0 auto;
     max-width: 400px;
     padding: 10px 40px;
-    background:#009edf;
+    background:#484848;
     color: #FFF;
     text-shadow: none;
     box-shadow: 0 3px 5px 0 rgba(0,0,0,0.31);
 }
 span.input-group-addon i {
-    color: #009edf;
+    color: #484848;
     font-size: 17px;
 }
 .login-button{

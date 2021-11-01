@@ -19,3 +19,13 @@ body{
     flex-direction: row;
     justify-content: center;
 }
+.navbar{
+    background-color: #484848;
+}
+.nav-link{
+    color: white;
+}
+.main-logo{
+    width: 46px;
+    height: 46px;
+}

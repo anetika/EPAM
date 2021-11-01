@@ -22,6 +22,7 @@
 <fmt:message key="user_account.date" var="user_account_date"/>
 <fmt:message key="signUp.login" var="signUp_login"/>
 <fmt:message key="user_account.logo" var="user_account_logo"/>
+<fmt:message key="user_account.uploadPhoto" var="user_account_uploadPhoto"/>
 <html>
 <head>
     <title>Account</title>
@@ -52,9 +53,8 @@
                                     <form action="<c:url value="/Controller"/>" method="post" enctype="multipart/form-data">
                                         <input type="hidden" name="command" value="upload_user_icon_command">
                                         <input type="file" id="content" name="content" onchange="uploadButtonController()">
-                                        <input type="submit" class="btn btn-primary" value="Upload photo" id="upload_button" disabled/>
+                                        <input type="submit" class="btn btn-primary" value="${user_account_uploadPhoto}" id="upload_button" disabled/>
                                     </form>
-
                                 </div>
                             </div>
                         </div>

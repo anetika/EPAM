@@ -19,7 +19,7 @@ public class ChangeLocaleCommand implements Command {
         session.setAttribute(SessionAttribute.LOCALE, locale);
         String prevPage = (String) session.getAttribute(SessionAttribute.PREV_PAGE);
 
-        Router router = new Router(prevPage, Router.RouterType.FORWARD);
+        Router router = new Router(prevPage, Router.RouterType.REDIRECT);
         return router;
     }
 }

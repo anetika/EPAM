@@ -20,15 +20,18 @@
 <fmt:message key="header.users" var="header_users"/>
 <fmt:message key="header.logOut" var="header_logOut"/>
 <fmt:message key="header.findJob" var="header_findJob"/>
+<fmt:message key="header.feedbacks" var="header_feedbacks"/>
 <html>
 <head>
     <title>Header</title>
 </head>
 <body>
 <jsp:include page="connection.jsp"/>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Logo</a>
+        <div class="navbar-brand">
+            <img src="<c:url value="/static/img/logo/logo.jpg"/> " class="main-logo" alt="Main logo">
+        </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -59,6 +62,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<c:url value = "/Controller?command=go_to_all_relevant_vacancies_page_command"/>">${header_vacancies}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<c:url value="/Controller?command=go_to_all_feedbacks_page_command"/>">${header_feedbacks}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<c:url value="/Controller?command=go_to_all_users_page_command"/>">${header_users}</a>
