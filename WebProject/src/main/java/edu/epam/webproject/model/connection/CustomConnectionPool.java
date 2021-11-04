@@ -37,7 +37,7 @@ public class CustomConnectionPool {
                 }
             }
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt(); //refactor
+            Thread.currentThread().interrupt();
         }
     }
 

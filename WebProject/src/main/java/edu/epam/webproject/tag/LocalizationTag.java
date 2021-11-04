@@ -1,6 +1,5 @@
 package edu.epam.webproject.tag;
 
-import jakarta.servlet.jsp.JspException;
 import jakarta.servlet.jsp.JspWriter;
 import jakarta.servlet.jsp.tagext.TagSupport;
 import org.apache.logging.log4j.LogManager;
@@ -11,7 +10,7 @@ import java.io.IOException;
 public class LocalizationTag extends TagSupport {
     private static final Logger logger = LogManager.getLogger();
     @Override
-    public int doStartTag() throws JspException {
+    public int doStartTag() {
         try{
             JspWriter out = pageContext.getOut();
             out.write("<div>" +

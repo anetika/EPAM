@@ -17,12 +17,12 @@ public class PagePath {
     public static final String MESSAGE_SEND_PAGE = "pages/all/email_send.jsp";
     public static final String ERROR_500_PAGE = "pages/all/error/500.jsp";
     public static final String ERROR_404_PAGE = "pages/all/error/404.jsp";
+    public static final String ALL_FEEDBACKS_PAGE = "pages/admin/all_feedbacks.jsp";
     public static final String GO_TO_USER_ACCOUNT_PAGE_COMMAND = "Controller?command=go_to_user_account_page_command";
     public static final String GO_TO_ALL_IRRELEVANT_VACANCIES_PAGE_COMMAND = "Controller?command=go_to_all_irrelevant_vacancies_page_command";
     public static final String GO_TO_ALL_RELEVANT_VACANCIES_PAGE_COMMAND = "Controller?command=go_to_all_relevant_vacancies_page_command";
     public static final String GO_TO_ALL_USERS_PAGE_COMMAND = "Controller?command=go_to_all_users_page_command";
     public static final String GO_TO_FIND_JOB_PAGE_COMMAND = "Controller?command=go_to_find_job_page_command";
-    public static final String ALL_FEEDBACKS_PAGE = "pages/admin/all_feedbacks.jsp";
 
     private PagePath(){}
 }

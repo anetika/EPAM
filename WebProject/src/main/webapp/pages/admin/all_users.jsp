@@ -23,7 +23,7 @@
 <head>
     <title>All users</title>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="<c:url value="../../static/css/listsss.css"/>">
+    <link rel="stylesheet" href="<c:url value="/static/css/lists.css"/>">
 </head>
 <body>
 <jsp:include page="../header.jsp"/>
@@ -55,7 +55,12 @@
                                             <tr class="inner-box">
                                                 <td>
                                                     <div class="event-img">
-                                                        <img src="" alt="User" />
+                                                        <c:if test="${user.icon == null}">
+                                                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="User icon" class="rounded-circle" width="150">
+                                                        </c:if>
+                                                        <c:if test="${user.icon != null}">
+                                                                <img src="<c:url value="${user.icon}"/> " alt="User icon" id="user_icon">
+                                                        </c:if>
                                                     </div>
                                                 </td>
                                                 <td>

@@ -26,7 +26,7 @@ public class UserStatusFilter implements Filter {
             session.setAttribute(SessionAttribute.ROLE, User.Role.GUEST);
             session.setAttribute(SessionAttribute.REJECTED_MESSAGE, true);
             httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + '/' + PagePath.ABOUT_PAGE);
-        }else if(user != null && user.getUserStatus() == User.UserStatus.IN_PROGRESS){
+        } else if(user != null && user.getUserStatus() == User.UserStatus.IN_PROGRESS){
             MailSender sender = new MailSender();
             sender.sendRegistrationMessage(user.getEmail());
             session.setAttribute(SessionAttribute.EMAIL_CONFIRM, false);
